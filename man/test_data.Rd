@@ -4,13 +4,29 @@
 \alias{test_data}
 \title{Test data}
 \usage{
-test_data(x = "GC=F", wish_date = Sys.Date())
+test_data(
+  x = "TSLA",
+  start_date = "2011-01-03",
+  end_date = Sys.Date(),
+  visuals = FALSE
+)
 }
 \arguments{
-\item{x}{}
+\item{x}{string ticker symbol from yahoo finance}
 
-\item{wish_date}{}
+\item{start_date}{string "YYYY-MM-DD" of starting date}
+
+\item{end_date}{string "YYYY-MM-DD" of end date}
+
+\item{visuals}{if TRUE, will show visualization of the test}
+}
+\value{
+test data (Up/Down of a given stock/index/commodity and the Fear&Greed Index), tested with a chi-square test
 }
 \description{
 Test data
+}
+\examples{
+test_data("^GSPC")
+test_data("AAPL", "2022-01-01", "2022-02-01")
 }

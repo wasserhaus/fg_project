@@ -4,13 +4,22 @@
 \alias{download_data}
 \title{Download data}
 \usage{
-download_data(x = "GC=F", wish_date = Sys.Date())
+download_data(x = "TSLA", start_date = "2011-01-03", end_date = Sys.Date())
 }
 \arguments{
-\item{x}{}
+\item{x}{string ticker symbol from yahoo finance}
 
-\item{wish_date}{}
+\item{start_date}{string "YYYY-MM-DD" of starting date}
+
+\item{end_date}{string "YYYY-MM-DD" of end date}
+}
+\value{
+downloads data and returns dataframe with columns: Date, Fear&Greed numeric value, the Sentiment and info whether day closed postive/negative
 }
 \description{
 Download data
+}
+\examples{
+download_data("^GSPC")
+download_data("AAPL", "2022-01-01", "2022-02-01")
 }

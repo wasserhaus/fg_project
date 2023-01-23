@@ -4,13 +4,22 @@
 \alias{num_summary}
 \title{Summary of data}
 \usage{
-num_summary(x = "GC=F", wish_date = Sys.Date())
+num_summary(x = "TSLA", start_date = "2011-01-03", end_date = Sys.Date())
 }
 \arguments{
-\item{x}{}
+\item{x}{string ticker symbol from yahoo finance}
 
-\item{wish_date}{}
+\item{start_date}{string "YYYY-MM-DD" of starting date}
+
+\item{end_date}{string "YYYY-MM-DD" of end date}
+}
+\value{
+numerical summary of the data
 }
 \description{
 Summary of data
+}
+\examples{
+num_summary("^GSPC")
+num_summary("AAPL", "2022-01-01", "2022-02-01")
 }
