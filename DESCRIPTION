@@ -1,10 +1,10 @@
-Package: fg_vs_dailyreturn_project
+Package: project1
 Title: Fear&Greed Index vs. Stock Price
 Version: 0.0.0.9100
 Authors@R: 
     person("Anton", "Fritzler", , "Anton.Fritzler@tum.de", role = c("aut", "cre"))
 Description: With this package one can do a chi-sqaure test for a stock price and the fear&greed sentiment.
-It also creates visualizations and a numerical summary.
+
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
