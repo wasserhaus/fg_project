@@ -1,5 +1,5 @@
-Package: project1
-Title: Test1
+Package: fg_vs_dailyreturn_project
+Title: Fear&Greed Index vs. Stock Price
 Version: 0.0.0.9100
 Authors@R: 
     person("Anton", "Fritzler", , "Anton.Fritzler@tum.de", role = c("aut", "cre"))
