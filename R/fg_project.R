@@ -1,7 +1,4 @@
 
-
-
-
 #' Download data
 #'
 #' @param x string ticker symbol from yahoo finance
@@ -194,7 +191,7 @@ visualize_data <- function(x ="TSLA", start_date =  "2011-01-03", end_date = Sys
 #' @examples
 #' test_data("^GSPC")
 #' test_data("AAPL", "2022-01-01", "2022-02-01")
-test_data <- function(x ="TSLA", start_date =  "2011-01-03", end_date = Sys.Date(), visuals = FALSE){
+test_data <- function(x ="TSLA", start_date =  "2011-01-03", end_date = Sys.Date(), visuals = FALSE, ...){
 
   df_fg <- download_data(x, start_date, end_date)
   df_fg$Close <- as.character(df_fg$Close)

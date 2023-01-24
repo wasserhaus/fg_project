@@ -52,7 +52,10 @@ Das Package kann man folgendermaßen installieren:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("00000000014A5469/fg_vs_dailyreturn_project")
+library(remotes)
+remotes::install_git("https://gitlab.lrz.de/00000000014A5469/fg_vs_dailyreturn_project.git")
+#Das Package heißt project1, d.h.
+library(project1) #ruft das Package auf
 ```
 
 ## Datensatz

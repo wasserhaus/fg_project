@@ -52,7 +52,10 @@ Das Package kann man folgendermaßen installieren:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("00000000014A5469/fg_vs_dailyreturn_project")
+library(remotes)
+remotes::install_git("https://gitlab.lrz.de/00000000014A5469/fg_vs_dailyreturn_project.git")
+#Das Package heißt project1, d.h.
+library(project1) #ruft das Package auf
 ```
 
 ## Datensatz
@@ -132,30 +135,30 @@ ich eine numerische Zusammenfassung:
 library(project1)
 num_summary()
 #> [1] "Time horizont"
-#> [1] "2011-01-03 to 2023-01-23"
+#> [1] "2011-01-03 to 2023-01-24"
 #> [1] "Total amount of observations (cleaned)"
-#> [1] 3032
+#> [1] 3035
 #> [1] "Summary of the ticker price data"
 #>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-#>   1.455  11.640  16.616  61.528  31.271 409.970 
+#>   1.455  11.642  16.623  61.555  31.725 409.970 
 #> [1] "Procentual change over given time"
-#> [1] "7518.03%"
+#> [1] "8100.11%"
 #> [1] "Frequency of each Sentiment over given time"
 #> 
 #>  extreme fear extreme greed          fear         greed       neutral 
-#>           494           326           784           908           520 
+#>           495           326           786           910           518 
 #> [1] "Frequency of negative(0) and positive(1) closed days over given time"
 #> 
 #>    0    1 
-#> 1568 1464 
+#> 1569 1466 
 #> [1] "Frequency of negative(0) and positive(1) closed days in regard of sentiment over given time"
 #>                
 #>                   0   1
-#>   extreme fear  275 219
+#>   extreme fear  276 219
 #>   extreme greed 160 166
-#>   fear          397 387
-#>   greed         461 447
-#>   neutral       275 245
+#>   fear          398 388
+#>   greed         461 449
+#>   neutral       274 244
 ```
 
 In den Test fließen mehr 3000 Beobachtungen ein. Dabei wurden im
@@ -214,9 +217,9 @@ test_data(visuals = TRUE)
     #>  Pearson's Chi-squared test
     #> 
     #> data:  table(df_fg$Sentiment, df_fg$Close)
-    #> X-squared = 4.9714, df = 4, p-value = 0.2902
+    #> X-squared = 5.2074, df = 4, p-value = 0.2667
     #> 
-    #> [1] "According to the Chi-Square test, one get a p-value of 0.29 which is bigger than the significance level of 0.05.\n                One cannot reject the null-hypothesis, which means that those variables are stochastically independent and there is\n                no relationship between the Fear&Greed sentiment and the daily closings."
+    #> [1] "According to the Chi-Square test, one get a p-value of 0.267 which is bigger than the significance level of 0.05.\n                One cannot reject the null-hypothesis, which means that those variables are stochastically independent and there is\n                no relationship between the Fear&Greed sentiment and the daily closings."
 
 ## Beispiele
 
@@ -240,7 +243,7 @@ test_data("^GSPC",visuals = TRUE)
     #>  Pearson's Chi-squared test
     #> 
     #> data:  table(df_fg$Sentiment, df_fg$Close)
-    #> X-squared = 37.476, df = 4, p-value = 1.437e-07
+    #> X-squared = 38.349, df = 4, p-value = 9.495e-08
     #> 
     #> [1] "According to the Chi-Square test, one get a p-value of 0 which is less than the significance level of 0.05.\n                One can reject the null-hypothesis, which means that those variables are stochastically dependent and there is\n                a relationship between the Fear&Greed sentiment and the daily closings."
 
@@ -259,7 +262,7 @@ test_data("^GDAXI",visuals = TRUE)
     #>  Pearson's Chi-squared test
     #> 
     #> data:  table(df_fg$Sentiment, df_fg$Close)
-    #> X-squared = 26.608, df = 4, p-value = 2.385e-05
+    #> X-squared = 26.977, df = 4, p-value = 2.009e-05
     #> 
     #> [1] "According to the Chi-Square test, one get a p-value of 0 which is less than the significance level of 0.05.\n                One can reject the null-hypothesis, which means that those variables are stochastically dependent and there is\n                a relationship between the Fear&Greed sentiment and the daily closings."
 
@@ -278,6 +281,6 @@ test_data("GC=F",visuals = TRUE)
     #>  Pearson's Chi-squared test
     #> 
     #> data:  table(df_fg$Sentiment, df_fg$Close)
-    #> X-squared = 1.3768, df = 4, p-value = 0.8482
+    #> X-squared = 1.6962, df = 4, p-value = 0.7914
     #> 
-    #> [1] "According to the Chi-Square test, one get a p-value of 0.848 which is bigger than the significance level of 0.05.\n                One cannot reject the null-hypothesis, which means that those variables are stochastically independent and there is\n                no relationship between the Fear&Greed sentiment and the daily closings."
+    #> [1] "According to the Chi-Square test, one get a p-value of 0.791 which is bigger than the significance level of 0.05.\n                One cannot reject the null-hypothesis, which means that those variables are stochastically independent and there is\n                no relationship between the Fear&Greed sentiment and the daily closings."
