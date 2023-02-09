@@ -53,7 +53,10 @@ Das Package kann man folgendermaßen installieren:
 ``` r
 # install.packages("remotes")
 library(remotes)
-remotes::install_git("https://gitlab.lrz.de/00000000014A5469/fg_vs_dailyreturn_project.git")
+remotes::install_gitlab("00000000014A5469/fg_vs_dailyreturn_project",
+                        host="gitlab.lrz.de", 
+                        auth_token = "your auth token", 
+                        force = TRUE)
 #Das Package heißt project1, d.h.
 library(project1) #ruft das Package auf
 ```
@@ -135,43 +138,43 @@ ich eine numerische Zusammenfassung:
 library(project1)
 num_summary()
 #> [1] "Time horizont"
-#> [1] "2011-01-03 to 2023-01-24"
+#> [1] "2011-01-03 to 2023-02-09"
 #> [1] "Total amount of observations (cleaned)"
-#> [1] 3035
+#> [1] 3045
 #> [1] "Summary of the ticker price data"
 #>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-#>   1.455  11.642  16.623  61.555  31.725 409.970 
+#>   1.455  11.684  16.670  62.008  34.276 409.970 
 #> [1] "Procentual change over given time"
-#> [1] "8100.11%"
+#> [1] "11342.41%"
 #> [1] "Frequency of each Sentiment over given time"
 #> 
 #>  extreme fear extreme greed          fear         greed       neutral 
-#>           495           326           786           910           518 
+#>           494           328           784           919           520 
 #> [1] "Frequency of negative(0) and positive(1) closed days over given time"
 #> 
 #>    0    1 
-#> 1569 1466 
+#> 1569 1476 
 #> [1] "Frequency of negative(0) and positive(1) closed days in regard of sentiment over given time"
 #>                
 #>                   0   1
-#>   extreme fear  276 219
-#>   extreme greed 160 166
-#>   fear          398 388
-#>   greed         461 449
-#>   neutral       274 244
+#>   extreme fear  275 219
+#>   extreme greed 160 168
+#>   fear          397 387
+#>   greed         462 457
+#>   neutral       275 245
 ```
 
 In den Test fließen mehr 3000 Beobachtungen ein. Dabei wurden im
 Datensatz z.B. Feiertage und Wochenenden entfernt. “Summary of the
 ticker price data” gibt an wie sich die Tesla Aktie über die Zeit
 entwickelt hat. Die Aktie hatte ihre Tiefpunkt bei 1,45 USD und
-Hochpunkt bei 409 USD. Der Durchschnittspreis beträgt 61 USD. Hätte man
+Hochpunkt bei 409 USD. Der Durchschnittspreis beträgt 62 USD. Hätte man
 am 03.01.2011 eine Tesla Aktie gekauft, könnte man sich jetz über einen
-Wertzuwachs von ca. 7518% freuen. Insgesamt gab es mehr negative (1568)
-als positive (1464) Tage, was einem Verhältnis von ca. 52:48 entspricht.
+Wertzuwachs von ca. 11342% freuen. Insgesamt gab es mehr negative (1569)
+als positive (1476) Tage, was einem Verhältnis von ca. 52:48 entspricht.
 Betrachtet man das Sentiment, fällt auf dass die Marktteilnehmer am
-häufigsten gierig waren (908), während extreme Gier am seltensten vorkam
-(326). Dies trifft auch zu, wenn man das Sentiment in negative/positive
+häufigsten gierig waren (919), während extreme Gier am seltensten vorkam
+(328). Dies trifft auch zu, wenn man das Sentiment in negative/positive
 aufteilt.
 
 ``` r
@@ -185,9 +188,9 @@ visualize_data()
 
 In diesem Abschnitt untersuchen wir, ob die zwei Variablen unabhängig
 sind. Hierfür wird, unter der Annahme der Unabhängigkeit, der Chi-Square
-Test verwendent. Wir erhalten einen Chi-Square Wert von ca. 4.97,
+Test verwendent. Wir erhalten einen Chi-Square Wert von ca. 5.59,
 welcher zusammen mit dem Freiheitsgrad von vier, einem p-Wert von ca.
-0.29 entspricht. 0.29 \> 0.05, d.h. H0 kann nicht verworfen werden.
+0.23 entspricht. 0.23 \> 0.05, d.h. H0 kann nicht verworfen werden.
 
 Die Grafik “Simulation-Based and Theoretical Chi-Square Null
 Distributions” zeigt als schwarzen Graph die theoretische Chi-Square
@@ -217,9 +220,9 @@ test_data(visuals = TRUE)
     #>  Pearson's Chi-squared test
     #> 
     #> data:  table(df_fg$Sentiment, df_fg$Close)
-    #> X-squared = 5.2074, df = 4, p-value = 0.2667
+    #> X-squared = 5.5936, df = 4, p-value = 0.2316
     #> 
-    #> [1] "According to the Chi-Square test, one get a p-value of 0.267 which is bigger than the significance level of 0.05.\n                One cannot reject the null-hypothesis, which means that those variables are stochastically independent and there is\n                no relationship between the Fear&Greed sentiment and the daily closings."
+    #> [1] "According to the Chi-Square test, one get a p-value of 0.232 which is bigger than the significance level of 0.05.\n                One cannot reject the null-hypothesis, which means that those variables are stochastically independent and there is\n                no relationship between the Fear&Greed sentiment and the daily closings."
 
 ## Beispiele
 
@@ -243,7 +246,7 @@ test_data("^GSPC",visuals = TRUE)
     #>  Pearson's Chi-squared test
     #> 
     #> data:  table(df_fg$Sentiment, df_fg$Close)
-    #> X-squared = 38.349, df = 4, p-value = 9.495e-08
+    #> X-squared = 38.275, df = 4, p-value = 9.834e-08
     #> 
     #> [1] "According to the Chi-Square test, one get a p-value of 0 which is less than the significance level of 0.05.\n                One can reject the null-hypothesis, which means that those variables are stochastically dependent and there is\n                a relationship between the Fear&Greed sentiment and the daily closings."
 
@@ -262,12 +265,12 @@ test_data("^GDAXI",visuals = TRUE)
     #>  Pearson's Chi-squared test
     #> 
     #> data:  table(df_fg$Sentiment, df_fg$Close)
-    #> X-squared = 26.977, df = 4, p-value = 2.009e-05
+    #> X-squared = 26.601, df = 4, p-value = 2.393e-05
     #> 
     #> [1] "According to the Chi-Square test, one get a p-value of 0 which is less than the significance level of 0.05.\n                One can reject the null-hypothesis, which means that those variables are stochastically dependent and there is\n                a relationship between the Fear&Greed sentiment and the daily closings."
 
-**3) Goldpreis** In diesem Fall erhält man einen p-Wert von über 0.8. H0
-kann nicht verworfen werden, d.h. es besteht stochastische
+**3) Goldpreis** In diesem Fall erhält man einen p-Wert von über 0.84.
+H0 kann nicht verworfen werden, d.h. es besteht stochastische
 Unabhängigkeit.
 
 ``` r
@@ -281,6 +284,6 @@ test_data("GC=F",visuals = TRUE)
     #>  Pearson's Chi-squared test
     #> 
     #> data:  table(df_fg$Sentiment, df_fg$Close)
-    #> X-squared = 1.6962, df = 4, p-value = 0.7914
+    #> X-squared = 1.3798, df = 4, p-value = 0.8477
     #> 
-    #> [1] "According to the Chi-Square test, one get a p-value of 0.791 which is bigger than the significance level of 0.05.\n                One cannot reject the null-hypothesis, which means that those variables are stochastically independent and there is\n                no relationship between the Fear&Greed sentiment and the daily closings."
+    #> [1] "According to the Chi-Square test, one get a p-value of 0.848 which is bigger than the significance level of 0.05.\n                One cannot reject the null-hypothesis, which means that those variables are stochastically independent and there is\n                no relationship between the Fear&Greed sentiment and the daily closings."

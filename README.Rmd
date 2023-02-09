@@ -53,7 +53,10 @@ Das Package kann man folgendermaßen installieren:
 ``` r
 # install.packages("remotes")
 library(remotes)
-remotes::install_git("https://gitlab.lrz.de/00000000014A5469/fg_vs_dailyreturn_project.git")
+remotes::install_gitlab("00000000014A5469/fg_vs_dailyreturn_project",
+                        host="gitlab.lrz.de", 
+                        auth_token = "your auth token", 
+                        force = TRUE)
 #Das Package heißt project1, d.h.
 library(project1) #ruft das Package auf
 ```
@@ -100,10 +103,10 @@ num_summary()
 ```
 In den Test fließen mehr 3000 Beobachtungen ein. Dabei wurden im Datensatz z.B. Feiertage und Wochenenden entfernt.
 "Summary of the ticker price data" gibt an wie sich die Tesla Aktie über die Zeit entwickelt hat. 
-Die Aktie hatte ihre Tiefpunkt bei 1,45 USD und Hochpunkt bei 409 USD. Der Durchschnittspreis beträgt 61 USD.
-Hätte man am 03.01.2011 eine Tesla Aktie gekauft, könnte man sich jetz über einen Wertzuwachs von ca. 7518% freuen.
-Insgesamt gab es mehr negative (1568) als positive (1464) Tage, was einem Verhältnis von ca. 52:48 entspricht.
-Betrachtet man das Sentiment, fällt auf dass die Marktteilnehmer am häufigsten gierig waren (908), während extreme Gier am seltensten vorkam (326). Dies trifft auch zu, wenn man das Sentiment in negative/positive aufteilt.
+Die Aktie hatte ihre Tiefpunkt bei 1,45 USD und Hochpunkt bei 409 USD. Der Durchschnittspreis beträgt 62 USD.
+Hätte man am 03.01.2011 eine Tesla Aktie gekauft, könnte man sich jetz über einen Wertzuwachs von ca. 11342% freuen.
+Insgesamt gab es mehr negative (1569) als positive (1476) Tage, was einem Verhältnis von ca. 52:48 entspricht.
+Betrachtet man das Sentiment, fällt auf dass die Marktteilnehmer am häufigsten gierig waren (919), während extreme Gier am seltensten vorkam (328). Dies trifft auch zu, wenn man das Sentiment in negative/positive aufteilt.
 
 ```{r, warning=FALSE, message=FALSE}
 library(project1)
@@ -112,7 +115,7 @@ visualize_data()
 
 
 ## Induktive Analyse
-In diesem Abschnitt untersuchen wir, ob die zwei Variablen unabhängig sind. Hierfür wird, unter der Annahme der Unabhängigkeit, der Chi-Square Test verwendent. Wir erhalten einen Chi-Square Wert von ca. 4.97, welcher zusammen mit dem Freiheitsgrad von vier, einem p-Wert von ca. 0.29 entspricht. 0.29 > 0.05, d.h. H0 kann nicht verworfen werden. 
+In diesem Abschnitt untersuchen wir, ob die zwei Variablen unabhängig sind. Hierfür wird, unter der Annahme der Unabhängigkeit, der Chi-Square Test verwendent. Wir erhalten einen Chi-Square Wert von ca. 5.59, welcher zusammen mit dem Freiheitsgrad von vier, einem p-Wert von ca. 0.23 entspricht. 0.23 > 0.05, d.h. H0 kann nicht verworfen werden. 
 
 Die Grafik "Simulation-Based and Theoretical Chi-Square Null Distributions" zeigt als schwarzen Graph die theoretische Chi-Square Verteilung mit Freiheitsgrad vier an, als Balkendiagramm die, mit dem Bootstrap Verfahren, approximierte Chi-Square Verteilung und rot markiert, den beobachteten Chi-Square Wert.
 
@@ -146,7 +149,7 @@ library(project1)
 test_data("^GDAXI",visuals = TRUE)
 ```
 __3) Goldpreis__
-In diesem Fall erhält man einen p-Wert von über 0.8. H0 kann nicht verworfen werden, d.h. es besteht stochastische Unabhängigkeit.
+In diesem Fall erhält man einen p-Wert von über 0.84. H0 kann nicht verworfen werden, d.h. es besteht stochastische Unabhängigkeit.
 
 ```{r, warning=FALSE, message=FALSE}
 library(project1)
