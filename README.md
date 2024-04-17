@@ -50,10 +50,7 @@ The package can be installed as follows:
 ``` r
 # install.packages("remotes")
 library(remotes)
-#remotes::install_gitlab("00000000014A5469/fg_vs_dailyreturn_project",
-                        host="gitlab.lrz.de", 
-                        auth_token = "your auth token", 
-                        force = TRUE)
+#remotes::install_git(https://github.com/wasserhaus/fg_project.git)
 #The package is called project1, i.e.
 library(project1) #calls the package
 ```
@@ -223,7 +220,7 @@ test_data(visuals = TRUE)
 I looked at various ticker symbols when choosing an example. Here are a
 few interesting observations.
 
-**1) SP500 Index (500 of the largest listed US companies)** It is
+**1) S&P500 Index (500 of the largest listed US companies)** It is
 noticeable here that we obtain a very small p-value and can therefore
 conclude that the two variables are stochastically dependent. Why is
 that? This is because the Fear&Greed Index is calculated on the basis of
