@@ -10,15 +10,19 @@
 Index relate to the daily returns of an asset (e.g. a stock, an index or
 a commodity)?
 
-Classic factors that influence the price of an asset are, for example \*
-Fundamental data (company profits, sales, debt, industry developments,
-company forecasts, etc.). \* Macroeconomic factors: (interest rates,
-inflation, unemployment, economic growth, etc.) \* Political
-developments: (tax laws, trade policy, war and unrest, etc.) But as the
-famous investor Warren Buffett once said: “Be fearful when others are
-greedy, and greedy when others are fearful.”, psychology also plays an
-important role in the stock market and this is exactly where my project
-comes in.
+Classic factors that influence the price of an asset are, for example
+
+-   Fundamental data (company profits, sales, debt, industry
+    developments, company forecasts, etc.).
+-   Macroeconomic factors: (interest rates, inflation, unemployment,
+    economic growth, etc.)
+-   Political developments: (tax laws, trade policy, war and unrest,
+    etc.)
+
+But as the famous investor Warren Buffett once said: “Be fearful when
+others are greedy, and greedy when others are fearful.”, psychology also
+plays an important role in the stock market and this is exactly where my
+project comes in.
 
 **What is the Fear&Greed Index?** The Fear&Greed Index is an indicator
 from CNN (<https://edition.cnn.com/markets/fear-and-greed>), which,
@@ -50,7 +54,7 @@ The package can be installed as follows:
 ``` r
 # install.packages("remotes")
 library(remotes)
-#remotes::install_git(https://github.com/wasserhaus/fg_project.git)
+remotes::install_git(https://github.com/wasserhaus/fg_project.git)
 #The package is called project1, i.e.
 library(project1) #calls the package
 ```
@@ -66,7 +70,7 @@ the data is requested via an HTTP request
 (<https://production.dataviz.cnn.io/index/fearandgreed/graphdata/2020-09-18>)
 and then cached as JSON. The data goes back to 18/09/2020. That’s a
 little short on observations. Consequently, I looked on github and found
-a csv dataset
+a csv dataset from @hackingthemarkets
 (<https://github.com/hackingthemarkets/sentiment-fear-and-greed>) that
 goes back to 03/01/2011. I merged these two datasets without overlap and
 assigned each day a sentiment (extreme fear, fear, neutral, greed or
